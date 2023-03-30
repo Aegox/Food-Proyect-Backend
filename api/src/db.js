@@ -4,9 +4,9 @@ const modelRecipe = require("./models/Recipe.js");
 const modelDiet  = require("./models/Diet.js");
 const modelUser  = require("./models/User.js");
 
-const {DB_USER, DB_PASSWORD, DB_HOST, DB_DEPLOY, DATABASE} = process.env;
+const {DB_USER, DB_PASSWORD, DB_HOST, RENDER_DB_DEPLOY, DATABASE} = process.env;
 
-const sequelize = new Sequelize('postgres://food_proyect_user:4FAcp96NdZJspFeSCH5iREu43O8rffNs@dpg-cghmnd02qv2772mssnb0-a.oregon-postgres.render.com/food_proyect?ssl=true', {logging: false,});
+const sequelize = new Sequelize(`${RENDER_DB_DEPLOY}`, {logging: false,});
 
 
 modelRecipe(sequelize);
