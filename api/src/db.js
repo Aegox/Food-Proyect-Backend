@@ -6,7 +6,7 @@ const modelUser  = require("./models/User.js");
 
 const {DB_USER, DB_PASSWORD, DB_HOST, DB_DEPLOY, DATABASE} = process.env;
 
-const sequelize = new Sequelize(`${DB_DEPLOY}`, {logging: false,});
+const sequelize = new Sequelize(DB_DEPLOY, {logging: false,});
 
 
 modelRecipe(sequelize);
