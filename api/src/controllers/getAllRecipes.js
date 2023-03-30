@@ -8,7 +8,7 @@ const getAllRecipes = async () => {
         const recipesApi = await getRecipesApi(); //asynchronou variable of the api recipes.
         const recipesDb = await getRecipesDb(); //asynchronou variable of the database recipes.
         const allRecipes = recipesApi.concat(recipesDb); 
-        return recipesDb.length ? allRecipes : recipesApi; //variable of the total recipes.
+        return allRecipes; //variable of the total recipes.
     } catch (err) {
         console.log(err)
     }

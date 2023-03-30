@@ -1,7 +1,7 @@
 require("dotenv").config({path: "../../.env"}) //require .end process.
 const fetch = require("node-fetch"); // import the method for make petitions. 
-const { API_KEY1} = process.env; // define the api key of recipes.
-const recipesUrl = `https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY1}&addRecipeInformation=true&number=20`; // endpoint for make petitions.
+const { RENDER_API_KEY} = process.env; // define the api key of recipes.
+const recipesUrl = `https://api.spoonacular.com/recipes/complexSearch?apiKey=${RENDER_API_KEY}&addRecipeInformation=true&number=20`; // endpoint for make petitions.
 
 const getRecipesApi = async () => { // asyncrhronou function to get all api recipes
     return await fetch(recipesUrl) // petition with get the fetch method.
