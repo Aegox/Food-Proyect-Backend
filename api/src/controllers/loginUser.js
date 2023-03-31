@@ -2,7 +2,7 @@ require("dotenv").config({path: "../../.env"})
 const {User} = require('../db.js');
 const bcrypt = require('bcryptjs');
 const  jwt = require('jsonwebtoken');
-const {SECRET_JWT} = process.env;
+const {RENDER_SECRET_JWT} = process.env;
 
 const loginUser = async (user) => {
     try {
@@ -17,7 +17,7 @@ const loginUser = async (user) => {
             const valid = await bcrypt.compare(password, userDb.passwordHash)
         
             if (valid) { 
-                const token = await jwt.sign({email}, SECRET_JWT, {expiresIn: 60*60*24});
+                const token = await jwt.sign({email}, RENDER_SECRET_JWT, {expiresIn: 60*60*24});
                 return {
                     verify: true,
                     token
