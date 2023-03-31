@@ -3,7 +3,7 @@ const {Router} = require('express');
 const getSavedRecipes = require('../controllers/getSavedRecipes.js');
 const jwt = require('jsonwebtoken');
 
-const {SECRET_JWT} = process.env;
+const {RENDER_SECRET_JWT} = process.env;
 const router = Router();
 
 
@@ -12,7 +12,7 @@ router.get('/savedRecipes', async (req, res) => {
         const authorization = req.headers.authorization;
         if (authorization) {
             const token = authorization.split(' ')[1];
-            const decoded = jwt.verify(token, SECRET_JWT); 
+            const decoded = jwt.verify(token, RENDER_SECRET_JWT); 
             if (decoded.email) {
                 const recipes = await getSavedRecipes(decoded.email);
                 return res.status(201).json({message: 'Authorized', recipes})

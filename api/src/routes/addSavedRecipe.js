@@ -4,7 +4,7 @@ const savedRecipes = require('../controllers/addSavedRecipe.js');
 const jwt = require('jsonwebtoken');
 
 const router = Router()
-const {SECRET_JWT} = process.env;
+const {RENDER_SECRET_JWT} = process.env;
 
 router.put('/addRecipe', async (req, res) => {
     try {
@@ -12,7 +12,7 @@ router.put('/addRecipe', async (req, res) => {
         const {recipe} = req.body;
         if (authorization) {
             const token = authorization.split(' ')[1];
-            const decoded = jwt.verify(token , SECRET_JWT);
+            const decoded = jwt.verify(token , RENDER_SECRET_JWT);
             if (decoded.email) {
                 await savedRecipes(decoded.email, recipe);
                 return res.status(200).json({message: 'Recipe has been add'})
