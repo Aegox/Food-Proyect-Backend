@@ -1,6 +1,6 @@
 require("dotenv").config({path: "../../.env"}) // require the .env process.
 const {Recipe, Diet} = require("../db.js"); // the model Recipe of the database.
-const { API_KEY} = process.env; //Define the api key.
+const { RENDER_API_KEY} = process.env; //Define the api key.
 const fetch = require("node-fetch"); // import the method for make petitions.
 
 const getRecipeInformation = async (ID) => {
@@ -14,7 +14,7 @@ const getRecipeInformation = async (ID) => {
                 attributes: ["Name"]
             }})
     }
-    return await fetch(`https://api.spoonacular.com/recipes/${ID}/information?apiKey=${API_KEY}`) // make a petition api of recipes with id recieved.
+    return await fetch(`https://api.spoonacular.com/recipes/${ID}/information?apiKey=${RENDER_API_KEY}`) // make a petition api of recipes with id recieved.
         .then(response => response.json())
         .then(response => {return { //destructure the api response and we keep the necessary information.
             id: response.id,
